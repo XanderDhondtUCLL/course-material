@@ -7,7 +7,7 @@ def interactive_greet():
     print(greet(name))
 
 
-def tip_calculator():
+def tip_calculator(): 
     total_price = int(input('Enter total price: '))
     tip_percentage = input("Enter tip percentage (default=20): ")
     if len(tip_percentage) == 0:
