@@ -98,10 +98,13 @@ def election_winner(votes):
     for vote in votes:
         updated_count = vote_counts.get(vote, 0) + 1
         vote_counts[vote] = updated_count
+        print(vote, updated_count)
         if updated_count > winner_vote_count:
             winner = vote
             winner_vote_count = updated_count
     return winner
+
+print(election_winner(('John','John','John','John','John','John','John','John','John','John','John','John','John', 'DarkSouls', 'John')))
 
 
 def matches_pattern(pattern, string):

@@ -1,14 +1,13 @@
+
 class Pair:
     def __init__(self):
         self.first = None
         self.second = None
 
-
 class Position:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-
 
 class Interval:
     def __init__(self, lower, upper):
@@ -16,17 +15,15 @@ class Interval:
         self.upper = upper
 
     def is_empty(self):
-        return self.lower > self.upper
+        return self.lower >= self.upper
 
     def contains(self, value):
-        return self.lower <= value <= self.upper
-
+        return self.lower <= value <= self.upper 
+    
     def overlaps_with(self, other):
         if self.is_empty() or other.is_empty():
             return False
         return self.contains(other.lower) or self.contains(other.upper) or other.contains(self.lower)
-
-print(Interval.lower)
 
 class Password:
     def __init__(self, password):
@@ -34,8 +31,7 @@ class Password:
 
     def verify(self, string):
         return self.__password == string
-
-
+    
 class Averager:
     def __init__(self):
         self.reset()
@@ -51,14 +47,9 @@ class Averager:
     def average(self):
         return self.__sum / self.__count
 
-
 class Counter:
     def __init__(self):
         self.__count = 0
-
-    @property
-    def count(self):
-        return self.__count
 
     def increment(self):
         self.__count += 1
@@ -66,12 +57,19 @@ class Counter:
     def reset(self):
         self.__count = 0
 
-
+    @property
+    def count(self):
+        return self.__count
 
 class Unit:
     def __init__(self, health, firepower, armor):
-        if health < 0 or firepower < 0 or armor < 0:
-            raise ValueError()
+        if health < 0:
+            raise ValueError('Health can not be negative')
+        if firepower < 0:
+            raise ValueError('Firepower can not be negative')
+        if armor < 0:
+            raise ValueError('Armor can not be negative')
+            
         self.__health = health
         self.__firepower = firepower
         self.__armor = armor
@@ -87,11 +85,10 @@ class Unit:
     @property
     def armor(self):
         return self.__armor
-
+    
     def shot_by(self, other):
         health_loss = max(0, other.firepower - self.armor)
         self.__health = max(0, self.__health - health_loss)
-
 
 class Tweet:
     def __init__(self, message, max_length):
